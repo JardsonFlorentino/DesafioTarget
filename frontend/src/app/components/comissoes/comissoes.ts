@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core'; // Adicionado aqui
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core'; 
 import { FormsModule } from '@angular/forms';
 import { ComissaoResultado, Venda } from '../../models/venda.model';
 import { VendaService } from '../../services/venda.service';
@@ -21,8 +21,6 @@ export class ComissoesComponent implements OnInit {
 
   editandoVendaId: string | null = null;
   valorEdicao: number = 0;
-
-  // O "cdr" (ChangeDetectorRef) foi adicionado aqui no construtor
   constructor(private vendaService: VendaService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {

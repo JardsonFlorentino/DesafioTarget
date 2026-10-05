@@ -1,49 +1,16 @@
-# 🎨 Target API - Interface Gráfica (Front-end)
+﻿# 💻 Target ERP - Front-end (Angular)
 
-Este é o projeto Front-end do **Desafio Target**, construído com o Framework **Angular**.
+Interface de Alta Fidelidade (High-Fidelity UI) desenvolvida em **Angular 17 (Standalone)**. O foco deste projeto foi construir uma experiência corporativa fluida, rápida e sem necessidade de bibliotecas externas poluentes (como Bootstrap ou Tailwind).
 
-O foco principal desta aplicação é fornecer uma experiência de usuário (UX) de alto nível. A interface foi construída do zero para simular um sistema "Desktop" moderno dentro do navegador, utilizando conceitos de Dark Mode, Glassmorphism (painéis translúcidos) e travamento de viewport.
+## 🎨 Design System e UX
+- **Abordagem Glassmorphism:** Elementos translúcidos e fundo em gradiente noturno (Dark Mode) para evitar fadiga visual em rotinas intensas de Back-Office.
+- **Layouts Resilientes:** Uso intensivo de CSS Grid e Flexbox garantindo que tabelas e históricos tenham rolagens independentes sem quebrar a tela inteira.
+- **Micro-interações:** Feedback imediato ao usuário (fade-ins sintonizados, hover effects em tabelas e glow nos botões).
+- **Proteção de UX (Debounce/Locks):** Botões críticos (como "Confirmar Lançamento") são bloqueados e alteram seu estado visual durante a transação de rede, prevenindo registros fantasmas por "clique duplo".
 
-## 🚀 Como Executar o Projeto
+## 🧩 Estrutura (Single Page Application)
+O aplicativo funciona como um SPA unificado através de abas de navegação (\pp.ts\), transitando de forma instantânea entre os Desafios sem recarregar o navegador.
 
-### Pré-requisitos
-
-Certifique-se de ter o [Node.js](https://nodejs.org/) instalado na sua máquina (recomendado versão 18 ou superior).
-
-### Instalando as Dependências
-
-Abra o seu terminal exatamente nesta pasta (`/frontend`) e rode o comando abaixo para baixar as dependências do projeto:
-
-```bash
-npm install
-```
-
-### Iniciando o Servidor de Desenvolvimento
-
-Para rodar a aplicação localmente na sua máquina, execute:
-
-```bash
-npm start
-```
-
-Após terminar a compilação, abra o seu navegador e acesse `http://localhost:4200/`. A aplicação possui "Live Reload", então ela atualizará sozinha caso você altere algum código no futuro.
-
----
-
-## 🛠️ Tecnologias e Arquitetura Utilizadas
-
-- **Angular 17+ (Standalone Components)**: O projeto foi desenvolvido com a arquitetura moderna do Angular, sem a necessidade pesada de módulos globais, tornando-o extremamente rápido e limpo.
-- **Integração HTTP**: Consumo dinâmico da API REST do C# via `HttpClient`.
-- **Design e CSS3 Avançado**:
-  - Layout construído com `CSS Grid` e `Flexbox`.
-  - Efeitos modernos como `backdrop-filter: blur`.
-  - Controle estrito de altura (`100vh`) e barras de rolagem nativas injetadas diretamente nos painéis (UX Premium).
-- **Reatividade**: Uso estratégico do `ChangeDetectorRef` para garantir atualizações instantâneas e sem "piscar" na tela após ações de CRUD (Inserção e Edição).
-
----
-
-## 📁 Estrutura do Projeto (Destaques)
-
-- `src/app/components/`: Onde residem as telas principais do sistema (ex: Módulo de Comissões).
-- `src/app/services/`: Camada que isola toda a comunicação (HTTP) com o servidor Back-end.
-- `src/app/models/`: Interfaces do TypeScript que espelham exatamente os Models criados no C#, garantindo segurança e tipagem forte em todo o fluxo de dados.
+### Módulos Ativos
+1. **[ 💼 Gestão de Vendas ]:** Dashboard financeiro com edição e deleção inline de vendas.
+2. **[ 📦 Controle de Estoque ]:** Painel logístico dividido entre Ações de Movimentação (Esquerda) e Catálogo de Saldos (Direita).

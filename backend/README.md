@@ -1,36 +1,24 @@
-# ⚙️ Target API - Servidor (Back-end)
+﻿# ⚙️ Target ERP - Back-end API
 
-Este é o projeto Back-end do **Desafio Target**, construído utilizando **C# e ASP.NET Core (.NET 8)**.
+API robusta construída em **.NET 8** responsável por aplicar as regras de negócio vitais do sistema e garantir a integridade dos dados antes da persistência.
 
-A responsabilidade desta API é processar as regras de negócio complexas do sistema (como o cálculo progressivo de comissões e gestão de dados), servindo as informações para a interface gráfica de forma rápida e segura.
+## 📂 Persistência de Dados
+A API utiliza persistência orientada a documentos (JSON), localizados na pasta \Data/\. Os arquivos (\endas.json\, \estoque.json\, \movimentacoes.json\) são gerados de forma automática na primeira requisição, garantindo resiliência (Lazy Loading estrutural).
 
-## 🚀 Como Executar a API
+## 🛡️ Regras de Negócio Aplicadas
+- **Comissões (Vendas):** O servidor jamais confia no valor de comissão enviado pelo Front-end. O cálculo é refeito e validado 100% no lado do servidor para evitar fraudes.
+- **Estoque Negativo (Almoxarifado):** Toda movimentação de SAÍDA sofre auditoria matemática em tempo real. Se a quantidade de saída for maior que o saldo atual do produto, a API recusa o registro e devolve HTTP 400.
 
-### Pré-requisitos
+## 🔗 Endpoints (Rotas)
 
-- [SDK do .NET 8](https://dotnet.microsoft.com/download/dotnet/8.0) instalado na sua máquina.
+### Vendas (\/api/vendas\)
+- \GET /\ - Retorna histórico
+- \GET /resumo\ - Retorna métricas de comissão
+- \POST /\ - Lança nova venda
+- \PUT /{id}\ - Atualiza uma venda
+- \DELETE /{id}\ - Exclui uma venda
 
-### Executando o Servidor
-
-Abra o seu terminal nesta pasta (`/backend`) e execute o comando:
-
-```bash
-dotnet run
-```
-
-A API será iniciada na sua máquina (fique atento ao console para ver a porta gerada, geralmente `http://localhost:5000` ou similar).
-
----
-
-## 🏛️ Arquitetura e Padrões Utilizados
-
-Este projeto não mistura responsabilidades. Ele foi desenhado utilizando padrões corporativos sólidos (**Service Pattern / MVC**):
-
-- **`Controllers/`**: A camada de apresentação (porta de entrada) da API. Recebe as chamadas HTTP (`GET`, `POST`, `PUT`, `DELETE`) e as encaminha para a camada de serviços sem poluir a rota com lógicas matemáticas.
-- **`Services/`**: O "cérebro" da aplicação. Onde residem as regras de cálculo (ex: validar quando uma comissão é 0%, 1% ou 5%).
-- **`Models/`**: Classes limpas (Entidades) que ditam a estrutura exata e os tipos dos dados trafegados.
-- **`Data/`**: Pasta responsável pela persistência temporária de dados (através de arquivos `.json`). Isso foi arquitetado para simular o comportamento de um Banco de Dados leve, garantindo que o histórico de vendas não seja perdido ao reiniciar a API.
-
-## 🛡️ Segurança e Configurações
-
-- **CORS Habilitado**: A API está devidamente configurada (`Program.cs`) para aceitar requisições de outras origens de forma segura, permitindo que a aplicação Angular (Front-end) consuma seus endpoints locais sem bloqueios do navegador.
+### Estoque (\/api/estoque\)
+- \GET /\ - Retorna o catálogo de produtos com saldo atual
+- \GET /movimentacoes\ - Retorna o histórico de movimentações logísticas
+- \POST /movimentar\ - Registra nova Entrada ou Saída e calcula novo saldo

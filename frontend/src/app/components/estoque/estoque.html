@@ -1,0 +1,104 @@
+<div class="estoque-container">
+
+    <!-- LADO ESQUERDO -->
+    <div class="painel-esquerdo">
+
+        <div class="glass-card form-card">
+            <h3>➕ Lançamento</h3>
+
+            <!-- O Formulário agora é um Grid Compacto -->
+            <div class="form-grid">
+
+                <div class="form-group col-full">
+                    <label>Produto</label>
+                    <select [(ngModel)]="novaMovimentacao.codigoProduto">
+                        <option *ngFor="let prod of produtos" [ngValue]="prod.codigoProduto">
+                            {{ prod.descricaoProduto }} (Saldo Atual: {{ prod.estoqueAtual }})
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Operação</label>
+                    <div class="toggle-tipo">
+                        <button [class.ativo-entrada]="novaMovimentacao.tipoMovimentacao === 'ENTRADA'"
+                            (click)="novaMovimentacao.tipoMovimentacao = 'ENTRADA'">ENTRADA</button>
+                        <button [class.ativo-saida]="novaMovimentacao.tipoMovimentacao === 'SAIDA'"
+                            (click)="novaMovimentacao.tipoMovimentacao = 'SAIDA'">SAÍDA</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Qtd.</label>
+                    <input type="number" min="1" [(ngModel)]="novaMovimentacao.quantidade">
+                </div>
+
+                <div class="form-group col-full">
+                    <label>Motivo da Movimentação</label>
+                    <input type="text" [(ngModel)]="novaMovimentacao.descricao"
+                        placeholder="Ex: Recebimento, Retirada...">
+                </div>
+
+            </div> <!-- Fim do Form Grid -->
+
+            <button class="btn-registrar" (click)="registrar()" [disabled]="carregando">
+                {{ carregando ? 'Processando...' : 'Confirmar Lançamento' }}
+            </button>
+
+
+            <div class="alert erro" *ngIf="erroMensagem">{{ erroMensagem }}</div>
+            <div class="alert sucesso" *ngIf="sucessoMensagem">{{ sucessoMensagem }}</div>
+        </div>
+
+        <!-- O Histórico agora tem o triplo de espaço! -->
+        <div class="glass-card" id="card-historico">
+            <h3>⏱️ Histórico de Atividades</h3>
+            <div class="timeline">
+                <div class="timeline-item" *ngFor="let mov of movimentacoes">
+                    <div class="badge" [ngClass]="mov.tipoMovimentacao.toLowerCase()">{{ mov.tipoMovimentacao }}</div>
+                    <div class="info">
+                        <strong>{{ mov.quantidade }}x (Cód {{ mov.codigoProduto }})</strong>
+                        <p>{{ mov.descricao }}</p>
+                        <small>{{ mov.dataMovimentacao | date:'dd/MM/yyyy HH:mm' }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LADO DIREITO: Catálogo Refinado -->
+    <div class="painel-direito">
+        <div class="glass-card" id="card-catalogo">
+            <div class="header-catalogo">
+                <div>
+                    <h3>📦 Estoque Atualizado</h3>
+                    <p class="subtitulo">Visão global e em tempo real dos seus produtos.</p>
+                </div>
+                <span class="badge-total">{{ produtos.length }} itens cadastrados</span>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table class="tabela-moderna">
+                    <thead>
+                        <tr>
+                            <th width="15%">Cód.</th>
+                            <th width="55%">Descrição do Produto</th>
+                            <th width="30%" class="texto-centro">Saldo Restante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prod of produtos">
+                            <td><span class="cod-tag">#{{ prod.codigoProduto }}</span></td>
+                            <td class="nome-produto">{{ prod.descricaoProduto }}</td>
+                            <td class="texto-centro destaque-saldo"
+                                [ngClass]="{'estoque-baixo': prod.estoqueAtual < 50}">
+                                {{ prod.estoqueAtual }} <span class="unidade">un.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

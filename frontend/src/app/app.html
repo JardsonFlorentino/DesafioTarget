@@ -1,1 +1,17 @@
-<app-comissoes></app-comissoes>
+<nav class="erp-navbar">
+    <div class="logo">🎯 Target ERP</div>
+
+    <div class="abas">
+        <button (click)="abaAtiva = 'vendas'" [class.ativa]="abaAtiva === 'vendas'">
+            💼 Gestão de Comissão
+        </button>
+        <button (click)="abaAtiva = 'estoque'" [class.ativa]="abaAtiva === 'estoque'">
+            📦 Controle de Estoque
+        </button>
+    </div>
+</nav>
+
+<main class="erp-content">
+    <app-comissoes *ngIf="abaAtiva === 'vendas'"></app-comissoes>
+    <app-estoque *ngIf="abaAtiva === 'estoque'"></app-estoque>
+</main>

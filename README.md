@@ -1,45 +1,26 @@
-# Desafio Técnico Target
+﻿# 🎯 Target Sistemas - Desafio Técnico
 
-Este repositório contém a resolução dos testes práticos propostos no processo seletivo da Target.
+Este repositório contém a solução completa para o desafio técnico da Target Sistemas, desenvolvido com uma arquitetura moderna (SPA) focada em **Performance, Regras de Negócio e UX/UI Premium**.
 
-Com o objetivo de demonstrar conhecimentos práticos em desenvolvimento web de ponta a ponta, as respostas aos algoritmos foram integradas em uma única aplicação Full-Stack. Isso permite validar as regras de negócio exigidas através de uma interface visual e próxima de um cenário real de trabalho.
+## 🏗️ Arquitetura do Projeto
+- **Back-end:** .NET 8 (C#) com arquitetura em Services e persistência baseada em arquivos JSON.
+- **Front-end:** Angular 17+ (Standalone Components) com tipagem rigorosa no TypeScript.
+- **UI/UX:** Design System próprio (Glassmorphism, Dark Mode, CSS Grid/Flexbox) e micro-interações sem uso de bibliotecas de terceiros.
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Módulos e Status
 
-- **[Back-end](./backend/README.md):** C# com ASP.NET Core (.NET 8) - Responsável pela validação, cálculos matemáticos das regras de negócio e persistência de dados em arquivos JSON.
-- **[Front-end](./frontend/README.md):** Angular 17+ - Interface gráfica reativa construída para consumir a API e apresentar os dados de forma organizada.
+### ✅ Desafio 01: Gestão de Vendas (Concluído)
+- Lançamento, Edição e Exclusão de vendas diárias.
+- Painel de fechamento automático de comissões baseado em regras de negócio (% por meta alcançada).
 
----
+### ✅ Desafio 02: Controle de Estoque (Concluído)
+- Registro rigoroso de movimentações logísticas (Entrada / Saída).
+- **Regra de Ouro:** O back-end bloqueia severamente qualquer saída que resulte em estoque negativo.
+- Timeline de histórico em tempo real e catálogo de saldos atualizado dinamicamente.
+- Proteção UX no front-end contra "duplo clique" acidental (Loaders de segurança).
 
-## 📋 Status dos Desafios
+### ⏳ Desafio 03: Cálculo de Juros Compostos (Em breve)
+- *Em planejamento...*
 
-Os três desafios lógicos propostos foram mapeados e organizados como módulos interativos dentro da aplicação:
-
-### [ X ] Desafio 1: Cálculo de Comissões (Módulo Comercial)
-
-> **Enunciado:** "Considerando que o json tem registros de vendas de um time comercial... faça um programa que leia os dados e calcule a comissão... abaixo de 100 (0%), abaixo de 500 (1%), a partir de 500 (5%)."
-
-- **A Solução:** Foi implementado um módulo completo ("Dashboard Comercial") que não apenas resolve o cálculo fixo, mas permite cadastrar, editar e excluir (CRUD) novas vendas na base de dados. A API em C# intercepta os lançamentos, aplica as regras matemáticas exigidas por faixa de valor, e devolve a somatória das comissões consolidadas por colaborador para a tela em tempo real.
-
-### [ ] Desafio 2: Movimentações de Estoque (Módulo de Almoxarifado)
-
-> **Enunciado:** "Faça um programa onde eu possa lançar movimentações de estoque (entrada/saída) dos produtos... cada movimentação deve ter um número identificador único e uma descrição. Ao final, retorne a qtde final do estoque."
-
-- **O Planejamento:** (Próxima etapa). Será criado um painel logístico onde o usuário poderá registrar Entradas e Saídas de produtos. A API irá gerar automaticamente um UUID (Identificador Único), registrar o histórico e o motivo da movimentação, validando para que não haja saída maior que o estoque, e retornando matematicamente o saldo final atualizado do produto.
-
-### [ ] Desafio 3: Cálculo de Juros (Módulo Financeiro)
-
-> **Enunciado:** "Faça um programa que a partir de um valor e de uma data de vencimento, calcule o valor dos juros na data de hoje considerando que a multa seja de 2,5% ao dia."
-
-- **O Planejamento:** (Em breve). Será desenvolvida uma calculadora financeira conectada ao relógio do sistema. O Back-end em C# fará o cruzamento da data de vencimento informada com a data atual (`DateTime.Now`), calculará a diferença de dias de atraso e aplicará a taxa dinâmica de 2,5% ao dia, devolvendo o valor corrigido para a tela.
-
----
-
-## 🚀 Como Executar e Testar o Projeto
-
-Para manter a documentação limpa, as instruções técnicas detalhadas de instalação e execução foram separadas em suas respectivas pastas.
-
-Para testar a aplicação na sua máquina local, siga os dois manuais abaixo:
-
-- ⚙️ **[Clique aqui para acessar o Manual de Inicialização do Back-end (C#)](./backend/README.md)**
-- 🎨 **[Clique aqui para acessar o Manual de Inicialização do Front-end (Angular)](./frontend/README.md)**
+## ⚙️ Como Executar
+Consulte os arquivos [README do Back-end](./backend/README.md) e [README do Front-end](./frontend/README.md) para instruções específicas de como rodar as APIs e o servidor de interface.

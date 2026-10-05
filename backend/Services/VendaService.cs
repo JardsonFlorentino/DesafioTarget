@@ -77,8 +77,6 @@ namespace TargetApi.Services
 
             File.WriteAllText(_caminhoArquivo, novoTexto);
         }
-
-        // 1. CRIAR (Adicionar Venda)
         public void AdicionarVenda(Venda novaVenda)
         {
             var vendas = LerVendas();
@@ -87,8 +85,6 @@ namespace TargetApi.Services
             vendas.Add(novaVenda);
             SalvarVendas(vendas);
         }
-
-        // 2. ATUALIZAR (Editar Venda)
         public bool EditarVenda(string id, Venda vendaEditada)
         {
             var vendas = LerVendas();
@@ -102,8 +98,6 @@ namespace TargetApi.Services
             SalvarVendas(vendas);
             return true;
         }
-
-        // 3. EXCLUIR (Deletar Venda)
         public bool ExcluirVenda(string id)
         {
             var vendas = LerVendas();
