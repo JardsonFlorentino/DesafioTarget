@@ -1,5 +1,9 @@
 ﻿# 🎯 Target Sistemas - Desafio Técnico
 
+> 🌐 **Live Demo (Produção):** [Acesse o Sistema Aqui](http://target.jardsonflorentino.com.br)
+>
+> *(Deploy CI/CD hospedado em Servidor Linux VPS próprio, utilizando Proxy Reverso Nginx e Systemd)*
+
 Este repositório contém a solução completa para o desafio técnico da Target Sistemas, desenvolvido com uma arquitetura moderna (SPA) focada em **Performance, Regras de Negócio e UX/UI Premium**.
 
 ## 🏗️ Arquitetura do Projeto
@@ -26,3 +30,4 @@ Este repositório contém a solução completa para o desafio técnico da Target
 
 ## ⚙️ Como Executar
 Consulte os arquivos [README do Back-end](./backend/README.md) e [README do Front-end](./frontend/README.md) para instruções específicas de como rodar as APIs e o servidor de interface.
+

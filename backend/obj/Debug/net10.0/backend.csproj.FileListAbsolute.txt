@@ -35,3 +35,12 @@ D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\ref\backend.dll
 D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\backend.sourcelink.json
 D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\Data\estoque.json
 D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\Data\movimentacoes.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\web.config
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\appsettings.Development.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\appsettings.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\backend.deps.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\backend.runtimeconfig.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\backend.staticwebassets.endpoints.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\Data\estoque.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\Data\movimentacoes.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\publish\Data\vendas.json

@@ -8,7 +8,10 @@ import { ComissaoResultado, Venda } from '../models/venda.model';
 })
 export class VendaService {
   // O endereÃ§o exato do nosso C#.
-  private apiUrl = 'http://localhost:5169/api/vendas';
+    private get apiUrl(): string {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    return isLocal ? 'http://localhost:5169/api/vendas' : '/api/vendas';
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -32,4 +35,5 @@ export class VendaService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
+
 
