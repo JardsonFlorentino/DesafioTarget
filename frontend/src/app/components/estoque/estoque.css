@@ -99,3 +99,8 @@ input:focus, select:focus { border-color: #38bdf8; box-shadow: 0 0 8px rgba(56, 
 .sucesso { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.2); }
 
 @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) {
+  .estoque-container { grid-template-columns: 1fr; gap: 20px; }
+  .acoes-painel, .catalogo-painel { max-height: none; }
+  .glass-card { padding: 20px; }
+}

@@ -95,3 +95,8 @@ input:focus { border-color: #38bdf8; box-shadow: 0 0 12px rgba(56, 189, 248, 0.2
 .empty-state .icon { font-size: 4rem; margin-bottom: 15px; opacity: 0.5; }
 .empty-state p { font-size: 1rem; }
 
+@media (max-width: 768px) {
+  .financeiro-container { grid-template-columns: 1fr; gap: 20px; }
+  .glass-card { padding: 20px; }
+  .recibo-card { min-width: unset; width: 100%; }
+}
