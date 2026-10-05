@@ -53,3 +53,9 @@
   height: calc(100vh - 72px);
   overflow: auto;
 }
+@media (max-width: 768px) {
+  .app-header { flex-direction: column; gap: 15px; padding: 15px; text-align: center; }
+  .tabs { flex-wrap: wrap; justify-content: center; width: 100%; gap: 10px; }
+  .tabs button { width: 100%; padding: 12px; font-size: 1rem; }
+  .main-content { padding: 15px; }
+}
