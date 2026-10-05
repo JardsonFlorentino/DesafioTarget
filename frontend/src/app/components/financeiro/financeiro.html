@@ -1,0 +1,82 @@
+﻿<div class="financeiro-container">
+  
+  <div class="painel-esquerdo">
+    <div class="glass-card form-card">
+      <h3>📈 Simulador de Juros</h3>
+      <p class="desc">Simulador corporativo de juros e encargos por atraso.</p>
+      
+      <div class="form-group">
+        <label>Valor Base (R$)</label>
+        <input type="number" min="0.01" step="0.01" [(ngModel)]="request.valorOriginal" placeholder="0.00">
+      </div>
+
+      <div class="form-group">
+        <label>Data de Vencimento</label>
+        <input type="date" [(ngModel)]="request.dataVencimento">
+      </div>
+
+      <button class="btn-calcular" (click)="calcular()" [disabled]="carregando">
+        {{ carregando ? 'Processando...' : 'Calcular Projeção' }}
+      </button>
+
+      <div class="alert erro" *ngIf="erroMensagem">{{ erroMensagem }}</div>
+    </div>
+  </div>
+
+  <div class="painel-direito">
+        <div class="glass-card empty-state" *ngIf="!resultado">
+      <div class="icon">📊</div>
+      <p>Preencha os dados ao lado para gerar o extrato.</p>
+    </div>
+
+    <div class="recibo-wrapper" *ngIf="resultado">
+      <div class="recibo-card">
+        <div class="recibo-header">
+          <h4>Demonstrativo de Cálculos</h4>
+          <span class="badge-tag">Ref: {{ resultado.dataCalculo | date:'MM/yyyy' }}</span>
+        </div>
+        
+        <div class="recibo-body">
+          <div class="recibo-linha">
+            <span class="label">Valor Original</span>
+            <strong class="value-base">{{ resultado.valorOriginal | currency:'BRL' }}</strong>
+          </div>
+          
+          <div class="recibo-linha">
+            <span class="label">Data de Vencimento</span>
+            <span class="value-text">{{ resultado.dataVencimento | date:'dd/MM/yyyy' }}</span>
+          </div>
+          
+          <div class="recibo-linha">
+            <span class="label">Data Base (Hoje)</span>
+            <span class="value-text">{{ resultado.dataCalculo | date:'dd/MM/yyyy' }}</span>
+          </div>
+          
+          <div class="linha-divisoria"></div>
+          
+          <div class="recibo-linha" [ngClass]="{'estado-atraso': resultado.diasAtraso > 0, 'estado-ok': resultado.diasAtraso === 0}">
+            <span class="label">Dias em Atraso</span>
+            <strong class="value-text">{{ resultado.diasAtraso }} dia(s)</strong>
+          </div>
+          
+          <div class="recibo-linha" [ngClass]="{'estado-atraso': resultado.diasAtraso > 0, 'estado-ok': resultado.diasAtraso === 0}">
+            <span class="label">Encargos (2,5% a.d)</span>
+            <strong class="value-text">+ {{ resultado.valorJuros | currency:'BRL' }}</strong>
+          </div>
+        </div>
+
+        <div class="recibo-footer">
+          <span class="label-total">Total Projetado</span>
+          <h2 class="value-total" [ngClass]="{'com-multa': resultado.diasAtraso > 0}">
+            {{ resultado.valorTotal | currency:'BRL' }}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

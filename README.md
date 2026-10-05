@@ -19,8 +19,10 @@ Este repositório contém a solução completa para o desafio técnico da Target
 - Timeline de histórico em tempo real e catálogo de saldos atualizado dinamicamente.
 - Proteção UX no front-end contra "duplo clique" acidental (Loaders de segurança).
 
-### ⏳ Desafio 03: Cálculo de Juros Compostos (Em breve)
-- *Em planejamento...*
+### ✅ Desafio 03: Cálculo de Juros e Multa (Concluído)
+- Calculadora financeira que calcula dias de atraso a partir de uma data de vencimento.
+- Aplica dinamicamente a taxa de 2,5% de juros/multa ao dia sobre o valor base.
+- Demonstrativo visual gerado em tempo real, informando o valor total corrigido.
 
 ## ⚙️ Como Executar
 Consulte os arquivos [README do Back-end](./backend/README.md) e [README do Front-end](./frontend/README.md) para instruções específicas de como rodar as APIs e o servidor de interface.

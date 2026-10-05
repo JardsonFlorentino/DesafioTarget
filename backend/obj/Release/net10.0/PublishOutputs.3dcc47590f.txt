@@ -1,0 +1,12 @@
+D:\DEV\DesafioTarget\backend\publish\backend.exe
+D:\DEV\DesafioTarget\backend\publish\appsettings.Development.json
+D:\DEV\DesafioTarget\backend\publish\appsettings.json
+D:\DEV\DesafioTarget\backend\publish\Data\estoque.json
+D:\DEV\DesafioTarget\backend\publish\Data\movimentacoes.json
+D:\DEV\DesafioTarget\backend\publish\Data\vendas.json
+D:\DEV\DesafioTarget\backend\publish\backend.dll
+D:\DEV\DesafioTarget\backend\publish\backend.deps.json
+D:\DEV\DesafioTarget\backend\publish\backend.runtimeconfig.json
+D:\DEV\DesafioTarget\backend\publish\backend.pdb
+D:\DEV\DesafioTarget\backend\publish\Microsoft.AspNetCore.OpenApi.dll
+D:\DEV\DesafioTarget\backend\publish\Microsoft.OpenApi.dll

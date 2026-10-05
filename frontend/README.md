@@ -14,3 +14,4 @@ O aplicativo funciona como um SPA unificado através de abas de navegação (\p
 ### Módulos Ativos
 1. **[ 💼 Gestão de Vendas ]:** Dashboard financeiro com edição e deleção inline de vendas.
 2. **[ 📦 Controle de Estoque ]:** Painel logístico dividido entre Ações de Movimentação (Esquerda) e Catálogo de Saldos (Direita).
+3. **[ 📈 Simulador de Juros ]:** Calculadora interativa de juros (2,5% a.d) com emissão de demonstrativo/recibo corporativo.

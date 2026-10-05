@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ComissaoResultado, Venda } from '../models/venda.model';
@@ -7,7 +7,7 @@ import { ComissaoResultado, Venda } from '../models/venda.model';
   providedIn: 'root'
 })
 export class VendaService {
-  // O endereço exato do nosso C#.
+  // O endereÃ§o exato do nosso C#.
   private apiUrl = 'http://localhost:5169/api/vendas';
 
   constructor(private http: HttpClient) { }
@@ -32,3 +32,4 @@ export class VendaService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
+

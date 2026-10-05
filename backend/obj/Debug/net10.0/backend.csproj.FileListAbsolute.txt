@@ -33,3 +33,5 @@ D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\backend.pdb
 D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\backend.genruntimeconfig.cache
 D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\ref\backend.dll
 D:\DEV\DesafioTarget\backend\obj\Debug\net10.0\backend.sourcelink.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\Data\estoque.json
+D:\DEV\DesafioTarget\backend\bin\Debug\net10.0\Data\movimentacoes.json

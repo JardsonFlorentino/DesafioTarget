@@ -1,4 +1,4 @@
-<nav class="erp-navbar">
+﻿<nav class="erp-navbar">
     <div class="logo">🎯 Target ERP</div>
 
     <div class="abas">
@@ -8,10 +8,14 @@
         <button (click)="abaAtiva = 'estoque'" [class.ativa]="abaAtiva === 'estoque'">
             📦 Controle de Estoque
         </button>
+        <button (click)="abaAtiva = 'financeiro'" [class.ativa]="abaAtiva === 'financeiro'">
+            📈 Cálculo de Juros
+        </button>
     </div>
 </nav>
 
 <main class="erp-content">
     <app-comissoes *ngIf="abaAtiva === 'vendas'"></app-comissoes>
     <app-estoque *ngIf="abaAtiva === 'estoque'"></app-estoque>
+    <app-financeiro *ngIf="abaAtiva === 'financeiro'"></app-financeiro>
 </main>

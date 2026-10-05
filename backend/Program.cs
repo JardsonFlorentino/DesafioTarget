@@ -7,6 +7,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<TargetApi.Services.VendaService>();
 builder.Services.AddScoped<backend.Services.EstoqueService>();
+builder.Services.AddScoped<backend.Services.FinanceiroService>();
 
 builder.Services.AddCors();
 

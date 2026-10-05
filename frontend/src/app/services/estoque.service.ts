@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movimentacao, Produto } from '../models/estoque.model';
@@ -7,7 +7,10 @@ import { Movimentacao, Produto } from '../models/estoque.model';
   providedIn: 'root'
 })
 export class EstoqueService {
-  private apiUrl = 'http://localhost:5169/api/estoque';
+    private get apiUrl(): string {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    return isLocal ? 'http://localhost:5169/api/estoque' : '/api/estoque';
+  }
 
   constructor(private http: HttpClient) { }
   getEstoque(): Observable<Produto[]> {
@@ -18,12 +21,12 @@ export class EstoqueService {
     return this.http.get<Movimentacao[]>(`${this.apiUrl}/movimentacoes`);
   }
 
-  // 2. Aciona o Cérebro [HttpPost("movimentar")]
+  // 2. Aciona o CÃ©rebro [HttpPost("movimentar")]
   registrarMovimentacao(mov: Movimentacao): Observable<any> {
     return this.http.post(`${this.apiUrl}/movimentar`, mov);
   }
 
-  // 3. Os métodos do CRUD do Catálogo de Produtos que fizemos por capricho!
+  // 3. Os mÃ©todos do CRUD do CatÃ¡logo de Produtos que fizemos por capricho!
   adicionarProduto(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(`${this.apiUrl}/produto`, produto);
   }
@@ -36,3 +39,4 @@ export class EstoqueService {
     return this.http.delete(`${this.apiUrl}/produto/${codigo}`);
   }
 }
+
