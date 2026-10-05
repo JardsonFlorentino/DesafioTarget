@@ -1,0 +1,87 @@
+<div class="container">
+    <header class="header">
+        <h1>📊 Gestão de Vendas e Comissões</h1>
+        <p>Acompanhamento de Resultados e Fechamento Comercial</p>
+    </header>
+
+    <div class="dashboard-grid">
+
+        <!-- ESQUERDA (30%): Histórico de Notas -->
+        <section class="card painel-historico">
+            <div class="historico-header">
+                <h2>📋 Histórico de Vendas</h2>
+                <button class="btn-novo" (click)="abrirModalNovaVenda()">➕ Nova Venda</button>
+            </div>
+
+            <div class="historico-lista">
+                <div class="historico-item" *ngFor="let venda of todasVendas">
+                    <div class="historico-dados" *ngIf="editandoVendaId !== venda.id">
+                        <span class="nome">{{ venda.vendedor }}</span>
+                        <span class="valor">{{ formatarMoeda(venda.valor) }}</span>
+                    </div>
+
+                    <div class="historico-acoes" *ngIf="editandoVendaId !== venda.id">
+                        <button class="btn-icone" (click)="iniciarEdicao(venda)">✏️</button>
+                        <button class="btn-icone btn-excluir" (click)="excluirVenda(venda.id)">🗑️</button>
+                    </div>
+
+                    <div class="historico-edicao" *ngIf="editandoVendaId === venda.id">
+                        <input type="number" class="input-pequeno" [(ngModel)]="valorEdicao">
+                        <button class="btn-icone btn-confirmar" (click)="salvarEdicao(venda)">✅</button>
+                        <button class="btn-icone" (click)="editandoVendaId = null">❌</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIREITA (70%): Fechamento -->
+        <section class="card painel-destaque">
+
+            <div class="header-comissoes">
+                <h2>🏆 Fechamento por Colaborador</h2>
+                <div class="regras-container">
+                    <!-- Textinho discreto adicionado aqui: -->
+                    <span class="regras-titulo">Regras:</span>
+
+                    <span class="badge-regra neutro">Até R$ 99 (0%)</span>
+                    <span class="badge-regra bom">Até R$ 499 (1%)</span>
+                    <span class="badge-regra otimo">&ge; R$ 500 (5%)</span>
+                </div>
+            </div>
+
+            <div class="tabela-wrapper">
+                <table class="tabela tabela-comissoes">
+                    <thead>
+                        <tr>
+                            <th>Colaborador</th>
+                            <th>Volume de Vendas (Bruto)</th>
+                            <th>Comissão Líquida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let comissao of comissoes">
+                            <td>{{ comissao.nomeVendedor }}</td>
+                            <td>{{ formatarMoeda(comissao.totalVendas) }}</td>
+                            <td class="valor-verde">{{ formatarMoeda(comissao.totalComissao) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="modalNovaVendaAberto">
+    <div class="modal-card">
+        <h2>➕ Registrar Venda</h2>
+        <div class="formulario">
+            <input type="text" placeholder="Nome do Vendedor" [(ngModel)]="vendaAtual.vendedor" />
+            <input type="number" placeholder="Valor da Nota (R$)" [(ngModel)]="vendaAtual.valor" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancelar" (click)="fecharModalNovaVenda()">Cancelar</button>
+            <button class="btn-salvar" (click)="salvarNovaVenda()">Confirmar Lançamento</button>
+        </div>
+    </div>
+</div>
